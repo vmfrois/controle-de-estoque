@@ -8,9 +8,11 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
 
+import com.viniciusfrois.sbmongo.entities.Category;
 import com.viniciusfrois.sbmongo.entities.Order;
 import com.viniciusfrois.sbmongo.entities.User;
 import com.viniciusfrois.sbmongo.entities.enums.OrderStatus;
+import com.viniciusfrois.sbmongo.repositories.CategoryRepository;
 import com.viniciusfrois.sbmongo.repositories.OrderRepository;
 import com.viniciusfrois.sbmongo.repositories.UserRepository;
 
@@ -24,8 +26,17 @@ public class TestConfig implements CommandLineRunner {
 	@Autowired
 	private OrderRepository orderRepository;
 	
+	@Autowired
+	private CategoryRepository categoryRepository;
+	
 	@Override
 	public void run(String... args) throws Exception {
+		
+		Category cat1 = new Category(null, "Screws");
+		Category cat2 = new Category(null, "Tools");
+		Category cat3 = new Category(null, "construction material");
+		
+		categoryRepository.saveAll(Arrays.asList(cat1,cat2,cat3));
 		
 		User maria = new User(null, "Maria Brown", "12345" ,"maria@gmail.com");
 		User alex = new User(null, "Alex Green", "12345" ,"alex@gmail.com");
