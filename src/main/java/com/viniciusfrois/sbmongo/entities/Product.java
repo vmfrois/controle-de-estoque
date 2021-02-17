@@ -1,6 +1,5 @@
 package com.viniciusfrois.sbmongo.entities;
 
-import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -12,23 +11,28 @@ import javax.persistence.Table;
 import javax.persistence.Transient;
 
 @Entity
-@Table(name = "tb_category")
-public class Category implements Serializable {
-	private static final long serialVersionUID = 1L;
-	
+@Table(name = "tb_product")
+public class Product {
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String name;
+	private String description;
+
+	// depois vamos criar a classe Fornecedor(provider)
+	//private Provider provider;
 	
 	@Transient // depois arrumar isso
-	private Set<Product> products = new HashSet<>();
+	private Set<Category> categories = new HashSet<>();
 	
-	public Category() {
+	public Product() {
 	}
-	public Category(Long id, String name) {
+	public Product(Long id, String name, String description) {
+		super();
 		this.id = id;
 		this.name = name;
+		this.description = description;
 	}
 
 	
@@ -48,6 +52,14 @@ public class Category implements Serializable {
 	}
 
 	
+	public String getDescription() {
+		return description;
+	}
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -64,7 +76,7 @@ public class Category implements Serializable {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Category other = (Category) obj;
+		Product other = (Product) obj;
 		if (id == null) {
 			if (other.id != null)
 				return false;

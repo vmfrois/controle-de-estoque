@@ -10,10 +10,12 @@ import org.springframework.context.annotation.Profile;
 
 import com.viniciusfrois.sbmongo.entities.Category;
 import com.viniciusfrois.sbmongo.entities.Order;
+import com.viniciusfrois.sbmongo.entities.Product;
 import com.viniciusfrois.sbmongo.entities.User;
 import com.viniciusfrois.sbmongo.entities.enums.OrderStatus;
 import com.viniciusfrois.sbmongo.repositories.CategoryRepository;
 import com.viniciusfrois.sbmongo.repositories.OrderRepository;
+import com.viniciusfrois.sbmongo.repositories.ProductRepository;
 import com.viniciusfrois.sbmongo.repositories.UserRepository;
 
 @Configuration
@@ -29,14 +31,24 @@ public class TestConfig implements CommandLineRunner {
 	@Autowired
 	private CategoryRepository categoryRepository;
 	
+	@Autowired
+	private ProductRepository productRepository;
+	
 	@Override
 	public void run(String... args) throws Exception {
 		
 		Category cat1 = new Category(null, "Screws");
-		Category cat2 = new Category(null, "Tools");
+		Category cat2 = new Category(null, "Hand Tools");
 		Category cat3 = new Category(null, "construction material");
 		
 		categoryRepository.saveAll(Arrays.asList(cat1,cat2,cat3));
+		
+		Product p1 = new Product(null, "Screwdriver", "A  screwdriver is a tool, manual or powered, used for screwing (installing) and unscrewing (removing) screws");
+		Product p2 = new Product(null, "Sheet metal screw", "Has sharp threads that cut into a material such as sheet metal, plastic or wood");
+		Product p3 = new Product(null, "Cement", "A cement is a binder, a substance used for construction that sets, hardens, and adheres to other materials to bind them together");
+		Product p4 = new Product(null, "Brick", "A brick is a type of block used to build walls");
+		
+		productRepository.saveAll(Arrays.asList(p1,p2,p3,p4));
 		
 		User maria = new User(null, "Maria Brown", "12345" ,"maria@gmail.com");
 		User alex = new User(null, "Alex Green", "12345" ,"alex@gmail.com");
