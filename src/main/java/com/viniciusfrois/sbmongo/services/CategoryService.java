@@ -2,7 +2,6 @@ package com.viniciusfrois.sbmongo.services;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.Queue;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
