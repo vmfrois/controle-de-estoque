@@ -11,8 +11,6 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 @Entity()
 @Table(name = "tb_user")
 public class User implements Serializable {
@@ -22,18 +20,23 @@ public class User implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String name;
-	private String password;
 	private String email;
+	private String password;
+	private String phone;
+	private String cpf;
+	
 
 	public User() {
 	}
 
-	public User(Long id, String name, String password, String email) {
+	public User(Long id, String name, String password, String email,String phone,String cpf) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.password = password;
 		this.email = email;
+		this.phone = phone;
+		this.cpf = cpf;
 	}
 	
 	@OneToMany(mappedBy = "client")
@@ -71,6 +74,23 @@ public class User implements Serializable {
 		this.email = email;
 	}
 	
+		
+	public String getPhone() {
+		return phone;
+	}
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
+
+	
+	
+	public String getCpf() {
+		return cpf;
+	}
+	public void setCpf(String cpf) {
+		this.cpf = cpf;
+	}
+
 	
 	public List<Order> getOrders() {
 		return orders;

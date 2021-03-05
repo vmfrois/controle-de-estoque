@@ -15,6 +15,7 @@ public class UserService {
 	@Autowired
 	private UserRepository repository;
 	
+	@SuppressWarnings("unchecked")
 	public List<User> findAll(){
 		return repository.findAll();
 	}

@@ -19,9 +19,6 @@ public class Product {
 	private Long id;
 	private String name;
 	private String description;
-
-	// depois vamos criar a classe Fornecedor(provider)
-	//private Provider provider;
 	
 	@Transient // depois arrumar isso
 	private Set<Category> categories = new HashSet<>();
