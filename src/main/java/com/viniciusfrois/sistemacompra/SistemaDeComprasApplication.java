@@ -1,13 +1,13 @@
-package com.viniciusfrois.sbmongo;
+package com.viniciusfrois.sistemacompra;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class ControleDeEstoqueApplication {
+public class SistemaDeComprasApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(ControleDeEstoqueApplication.class, args);
+		SpringApplication.run(SistemaDeComprasApplication.class, args);
 	}
 
 }

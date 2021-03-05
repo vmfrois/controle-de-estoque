@@ -1,4 +1,4 @@
-package com.viniciusfrois.sbmongo.resources;
+package com.viniciusfrois.sistemacompra.resources;
 
 import java.util.List;
 
@@ -9,25 +9,25 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.viniciusfrois.sbmongo.entities.Product;
-import com.viniciusfrois.sbmongo.services.ProductService;
+import com.viniciusfrois.sistemacompra.entities.Category;
+import com.viniciusfrois.sistemacompra.services.CategoryService;
 
 @RestController
-@RequestMapping(value = "/products")
-public class ProductResource {
+@RequestMapping(value = "/categories")
+public class CategoryResource {
 
 	@Autowired
-	private ProductService service;
+	private CategoryService service;
 	
 	@RequestMapping(method = RequestMethod.GET)
-	public ResponseEntity<List<Product>> findAll(){
-		List<Product> list = service.findAll();
+	public ResponseEntity<List<Category>> findAll(){
+		List<Category> list = service.findAll();
 		return ResponseEntity.ok().body(list);
 	}
 	
 	@RequestMapping(method = RequestMethod.GET, value = "/{id}")
-	public ResponseEntity<Product> findById(@PathVariable Long id){
-		Product obj = service.findById(id);
+	public ResponseEntity<Category> findById(@PathVariable Long id){
+		Category obj = service.findById(id);
 		return ResponseEntity.ok().body(obj);
 	}
 	

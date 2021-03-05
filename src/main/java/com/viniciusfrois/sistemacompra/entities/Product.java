@@ -1,4 +1,4 @@
-package com.viniciusfrois.sbmongo.entities;
+package com.viniciusfrois.sistemacompra.entities;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -27,6 +27,9 @@ public class Product {
 	@JoinTable(name = "tb_category_product",joinColumns = @JoinColumn(name="product_id") ,
 	inverseJoinColumns = @JoinColumn(name="category_id"))
 	private Set<Category> categories = new HashSet<>();
+	
+	@ManyToMany(mappedBy = "products")
+	private Set<Provider> providers = new HashSet<>();
 	
 	public Product() {
 	}
@@ -65,7 +68,11 @@ public class Product {
 	public Set<Category> getCategories() {
 		return categories;
 	}
-
+	
+	
+	public Set<Provider> getProviders(){
+		return providers;
+	}
 	
 	@Override
 	public int hashCode() {

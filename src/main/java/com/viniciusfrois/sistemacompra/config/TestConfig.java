@@ -1,4 +1,4 @@
-package com.viniciusfrois.sbmongo.config;
+package com.viniciusfrois.sistemacompra.config;
 
 import java.time.Instant;
 import java.util.Arrays;
@@ -8,15 +8,15 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
 
-import com.viniciusfrois.sbmongo.entities.Category;
-import com.viniciusfrois.sbmongo.entities.Order;
-import com.viniciusfrois.sbmongo.entities.Product;
-import com.viniciusfrois.sbmongo.entities.User;
-import com.viniciusfrois.sbmongo.entities.enums.OrderStatus;
-import com.viniciusfrois.sbmongo.repositories.CategoryRepository;
-import com.viniciusfrois.sbmongo.repositories.OrderRepository;
-import com.viniciusfrois.sbmongo.repositories.ProductRepository;
-import com.viniciusfrois.sbmongo.repositories.UserRepository;
+import com.viniciusfrois.sistemacompra.entities.Category;
+import com.viniciusfrois.sistemacompra.entities.Order;
+import com.viniciusfrois.sistemacompra.entities.Product;
+import com.viniciusfrois.sistemacompra.entities.User;
+import com.viniciusfrois.sistemacompra.entities.enums.OrderStatus;
+import com.viniciusfrois.sistemacompra.repositories.CategoryRepository;
+import com.viniciusfrois.sistemacompra.repositories.OrderRepository;
+import com.viniciusfrois.sistemacompra.repositories.ProductRepository;
+import com.viniciusfrois.sistemacompra.repositories.UserRepository;
 
 @Configuration
 @Profile("test")

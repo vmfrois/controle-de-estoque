@@ -1,4 +1,4 @@
-package com.viniciusfrois.sbmongo.entities.enums;
+package com.viniciusfrois.sistemacompra.entities.enums;
 
 public enum OrderStatus {
 
