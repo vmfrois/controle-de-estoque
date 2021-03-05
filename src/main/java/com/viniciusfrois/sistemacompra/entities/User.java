@@ -1,4 +1,4 @@
-package com.viniciusfrois.sbmongo.entities;
+package com.viniciusfrois.sistemacompra.entities;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -10,6 +10,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity()
 @Table(name = "tb_user")
@@ -39,6 +41,7 @@ public class User implements Serializable {
 		this.cpf = cpf;
 	}
 	
+	@JsonIgnore
 	@OneToMany(mappedBy = "client")
 	private List<Order> orders = new ArrayList<>();
 

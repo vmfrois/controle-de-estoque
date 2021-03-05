@@ -1,4 +1,4 @@
-package com.viniciusfrois.sbmongo.entities;
+package com.viniciusfrois.sistemacompra.entities;
 
 import java.io.Serializable;
 import java.time.Instant;
@@ -12,8 +12,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.viniciusfrois.sbmongo.entities.enums.OrderStatus;
+import com.viniciusfrois.sistemacompra.entities.enums.OrderStatus;
 
 @Entity
 @Table(name = "tb_order")
@@ -28,7 +27,6 @@ public class Order implements Serializable{
 	private Instant moment;
 	private Integer orderStatus;
 	
-	@JsonIgnore
 	@ManyToOne()
 	@JoinColumn(name = "client_id")
 	private User client;

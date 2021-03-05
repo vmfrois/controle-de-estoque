@@ -1,6 +1,5 @@
-package com.viniciusfrois.sbmongo.entities;
+package com.viniciusfrois.sistemacompra.entities;
 
-import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -8,31 +7,34 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
-import javax.persistence.Transient;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
-@Table(name = "tb_category")
-public class Category implements Serializable {
-	private static final long serialVersionUID = 1L;
-	
+@Table(name = "tb_product")
+public class Product {
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String name;
+	private String description;
 	
-	@JsonIgnore
-	@ManyToMany(mappedBy = "categories")
-	private Set<Product> products = new HashSet<>();
 	
-	public Category() {
+	@ManyToMany
+	@JoinTable(name = "tb_category_product",joinColumns = @JoinColumn(name="product_id") ,
+	inverseJoinColumns = @JoinColumn(name="category_id"))
+	private Set<Category> categories = new HashSet<>();
+	
+	public Product() {
 	}
-	public Category(Long id, String name) {
+	public Product(Long id, String name, String description) {
+		super();
 		this.id = id;
 		this.name = name;
+		this.description = description;
 	}
 
 	
@@ -50,12 +52,20 @@ public class Category implements Serializable {
 	public void setName(String name) {
 		this.name = name;
 	}
+
 	
-	
-	public Set<Product> getProducts() {
-		return products;
+	public String getDescription() {
+		return description;
+	}
+	public void setDescription(String description) {
+		this.description = description;
 	}
 	
+	
+	public Set<Category> getCategories() {
+		return categories;
+	}
+
 	
 	@Override
 	public int hashCode() {
@@ -73,7 +83,7 @@ public class Category implements Serializable {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Category other = (Category) obj;
+		Product other = (Product) obj;
 		if (id == null) {
 			if (other.id != null)
 				return false;

@@ -1,5 +1,6 @@
-package com.viniciusfrois.sbmongo.entities;
+package com.viniciusfrois.sistemacompra.entities;
 
+import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -7,34 +8,31 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
+import javax.persistence.Transient;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
-@Table(name = "tb_product")
-public class Product {
-
+@Table(name = "tb_category")
+public class Category implements Serializable {
+	private static final long serialVersionUID = 1L;
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String name;
-	private String description;
 	
+	@JsonIgnore
+	@ManyToMany(mappedBy = "categories")
+	private Set<Product> products = new HashSet<>();
 	
-	@ManyToMany
-	@JoinTable(name = "tb_category_product",joinColumns = @JoinColumn(name="product_id") ,
-	inverseJoinColumns = @JoinColumn(name="category_id"))
-	private Set<Category> categories = new HashSet<>();
-	
-	public Product() {
+	public Category() {
 	}
-	public Product(Long id, String name, String description) {
-		super();
+	public Category(Long id, String name) {
 		this.id = id;
 		this.name = name;
-		this.description = description;
 	}
 
 	
@@ -52,20 +50,12 @@ public class Product {
 	public void setName(String name) {
 		this.name = name;
 	}
-
-	
-	public String getDescription() {
-		return description;
-	}
-	public void setDescription(String description) {
-		this.description = description;
-	}
 	
 	
-	public Set<Category> getCategories() {
-		return categories;
+	public Set<Product> getProducts() {
+		return products;
 	}
-
+	
 	
 	@Override
 	public int hashCode() {
@@ -83,7 +73,7 @@ public class Product {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Product other = (Product) obj;
+		Category other = (Category) obj;
 		if (id == null) {
 			if (other.id != null)
 				return false;

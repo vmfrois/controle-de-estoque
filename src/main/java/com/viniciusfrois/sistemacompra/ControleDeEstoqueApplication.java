@@ -1,4 +1,4 @@
-package com.viniciusfrois.sbmongo;
+package com.viniciusfrois.sistemacompra;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

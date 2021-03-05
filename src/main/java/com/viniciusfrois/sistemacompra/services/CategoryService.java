@@ -1,4 +1,4 @@
-package com.viniciusfrois.sbmongo.services;
+package com.viniciusfrois.sistemacompra.services;
 
 import java.util.List;
 import java.util.Optional;
@@ -6,8 +6,8 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.viniciusfrois.sbmongo.entities.Category;
-import com.viniciusfrois.sbmongo.repositories.CategoryRepository;
+import com.viniciusfrois.sistemacompra.entities.Category;
+import com.viniciusfrois.sistemacompra.repositories.CategoryRepository;
 
 @Service
 public class CategoryService {
