@@ -40,13 +40,20 @@ public class TestConfig implements CommandLineRunner {
 		Category cat1 = new Category(null, "Screws");
 		Category cat2 = new Category(null, "Hand Tools");
 		Category cat3 = new Category(null, "construction material");
-		
-		categoryRepository.saveAll(Arrays.asList(cat1,cat2,cat3));
-		
+
 		Product p1 = new Product(null, "Screwdriver", "A  screwdriver is a tool, manual or powered, used for screwing (installing) and unscrewing (removing) screws");
 		Product p2 = new Product(null, "Sheet metal screw", "Has sharp threads that cut into a material such as sheet metal, plastic or wood");
 		Product p3 = new Product(null, "Cement", "A cement is a binder, a substance used for construction that sets, hardens, and adheres to other materials to bind them together");
 		Product p4 = new Product(null, "Brick", "A brick is a type of block used to build walls");
+		
+		categoryRepository.saveAll(Arrays.asList(cat1,cat2,cat3));
+		productRepository.saveAll(Arrays.asList(p1,p2,p3,p4));
+		
+		p1.getCategories().add(cat2);
+		p2.getCategories().add(cat1);
+		p2.getCategories().add(cat1);
+		p3.getCategories().add(cat3);
+		p4.getCategories().add(cat3);
 		
 		productRepository.saveAll(Arrays.asList(p1,p2,p3,p4));
 		
